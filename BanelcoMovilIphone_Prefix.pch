@@ -1,0 +1,39 @@
+//
+// Prefix header for all source files of the 'BanelcoMovilIphone' target in the 'BanelcoMovilIphone' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+
+    #ifndef IS_IPHONE_5
+        #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+        #define IPHONE5_HDIFF(height) (IS_IPHONE_5?height+(568-480):height)
+    #endif
+
+    #ifndef WSDEBUG
+        #define WSDEBUG FALSE
+    #endif
+
+#ifndef TEST_DEV
+#define TEST_DEV FALSE
+#endif
+
+#ifndef SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#endif
+
+//Se usa en P2P
+#ifndef PROJ_BANELCO
+    #define PROJ_BANELCO TRUE
+#endif
+
+#ifndef REMOVE_LOG
+#define REMOVE_LOG FALSE
+#endif
+
+#if REMOVE_LOG
+#define NSLog(...)
+#endif
+
+#endif
